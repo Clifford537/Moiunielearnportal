@@ -1,0 +1,37 @@
+<!-- courses/courselist.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course List</title>
+</head>
+<body>
+    <h1>Course List</h1>
+
+    <ul>
+        {% for course in courses %}
+            <li>
+                <a href="{% url 'courses:course_detail' course.id %}">{{ course.title }}</a>
+                <p>{{ course.description }}</p>
+                <!-- Add more details as needed -->
+                {% if user.user_type == 'staff' %}
+                    <a href="{% url 'courses:edit_course' course.id %}">Edit</a>
+                    <form action="{% url 'courses:delete_course' course.id %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>No courses available.</li>
+        {% endfor %}
+    </ul>
+
+    {% if user.user_type == 'staff' %}
+        <a href="{% url 'courses:add_course' %}">Add Course</a>
+    {% endif %}
+
+    <a href="{% url 'courses:staff_dashboard' %}">Back to Dashboard</a>
+</body>
+</html>

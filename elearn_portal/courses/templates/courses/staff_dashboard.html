@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to the Staff Dashboard</h1>
+
+    <h2>Course Management</h2>
+    <ul>
+        <li><a href="{% url 'courses:add_course' %}">Add Course</a></li>
+        <!-- List of courses with options to edit and delete -->
+        <ul>
+            {% for course in courses %}
+            <li>
+                <a href="{% url 'courses:course_detail' course.id %}">{{ course.title }}</a>
+                <a href="{% url 'courses:edit_course' course.id %}">Edit</a>
+                <a href="{% url 'courses:delete_course' course.id %}">Delete</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </ul>
+</body>
+</html>

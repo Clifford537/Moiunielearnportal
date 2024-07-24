@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ course.title }}</title>
+</head>
+<body>
+    <h1>{{ course.title }}</h1>
+    <p>{{ course.description }}</p>
+
+    <h2>Topics</h2>
+    <ul>
+        {% for topic in topics %}
+        <li>{{ topic.title }}</li>
+        {% empty %}
+        <li>No topics available.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Add additional functionality like rating, enrollment, etc. -->
+
+    <a href="{% url 'courses:edit_course' course.id %}">Edit Course</a>
+    <a href="{% url 'courses:delete_course' course.id %}">Delete Course</a>
+</body>
+</html>

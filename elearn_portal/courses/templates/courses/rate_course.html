@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rate Course</title>
+</head>
+<body>
+    <h1>Rate Course: {{ course.title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="rating">Rate this course:</label>
+        <select name="rating" id="rating">
+            <option value="1">1 - Poor</option>
+            <option value="2">2 - Fair</option>
+            <option value="3">3 - Average</option>
+            <option value="4">4 - Good</option>
+            <option value="5">5 - Excellent</option>
+        </select>
+        <button type="submit">Submit Rating</button>
+    </form>
+</body>
+</html>

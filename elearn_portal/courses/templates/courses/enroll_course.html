@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enroll Course</title>
+</head>
+<body>
+    <h1>Enroll Course: {{ course.title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <!-- Add enrollment form fields here if needed -->
+        <button type="submit">Enroll</button>
+    </form>
+</body>
+</html>
